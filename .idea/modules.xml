@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ATM-Machine/ATM-Machine.iml" filepath="$PROJECT_DIR$/ATM-Machine/ATM-Machine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BruitForce/BruitForce.iml" filepath="$PROJECT_DIR$/BruitForce/BruitForce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CodingChallanges/CodingChallanges.iml" filepath="$PROJECT_DIR$/CodingChallanges/CodingChallanges.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DemoProjects/DemoProjects.iml" filepath="$PROJECT_DIR$/DemoProjects/DemoProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ImageToText/ImageToText.iml" filepath="$PROJECT_DIR$/ImageToText/ImageToText.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LanguageAnalysis/LanguageAnalysis.iml" filepath="$PROJECT_DIR$/LanguageAnalysis/LanguageAnalysis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TOOLS/TOOLS.iml" filepath="$PROJECT_DIR$/TOOLS/TOOLS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TicTacToe_MinMax/TicTacToe_MinMax.iml" filepath="$PROJECT_DIR$/TicTacToe_MinMax/TicTacToe_MinMax.iml" />
+    </modules>
+  </component>
+</project>
