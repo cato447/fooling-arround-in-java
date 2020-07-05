@@ -3,6 +3,7 @@ package sprites.shootingMissles;
 public class Missile extends Sprite {
 
     private final int MISSILE_SPEED = 2;
+    private final int FRAME_WIDTH = 400;
 
     public Missile(int x, int y) {
         super(x, y);
@@ -11,15 +12,14 @@ public class Missile extends Sprite {
     }
 
     private void initMissile() {
-        loadImage("/home/bitecoding/Pictures/laser.png",35,35);
-        getImageDimensions();
+        loadImage("DemoProjects/res/laser.png",100,10);
     }
 
     public void move() {
 
-        y -= MISSILE_SPEED;
+        x += MISSILE_SPEED;
 
-        if (y < 0) {
+        if (x > FRAME_WIDTH) {
             visible = false;
         }
     }

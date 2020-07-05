@@ -20,8 +20,7 @@ public class SpaceShip extends Sprite {
 
         missiles = new ArrayList<>();
 
-        loadImage("/home/bitecoding/Pictures/spaceship.png",50,50);
-        getImageDimensions();
+        loadImage("DemoProjects/res/spaceship.png",50,50);
     }
 
     public void move() {
@@ -59,7 +58,7 @@ public class SpaceShip extends Sprite {
     }
 
     public void fire() {
-        missiles.add(new Missile(x + width, y + height / 2));
+        missiles.add(new Missile(x - width/2, y + height/2 - 5));
     }
 
     public void keyReleased(KeyEvent e) {
