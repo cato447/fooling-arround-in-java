@@ -30,7 +30,17 @@ public class Board extends JPanel implements ActionListener {
     private void initBoard(){
         painter = new Painter(B_WIDTH,B_HEIGHT);
 
-        addMouseListener(new MAdapter());
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                int column = e.getX()/TILE_X;
+                int row = e.getY()/TILE_Y;
+                game.place(column * 3 + row, 1);
+                System.out.println(Arrays.toString(game.getPlayfield()));
+            }
+        });
+
         setBackground(Color.BLACK);
         setFocusable(true);
         setPreferredSize(new Dimension(B_WIDTH,B_HEIGHT));
@@ -64,30 +74,70 @@ public class Board extends JPanel implements ActionListener {
                 actions++;
             }
         }
+        painter.paintWinnerLine(g);
     }
 
+    public void resetBoard(){
+        for (int i = 0; i < game.getPlayfield().length; i++){
+            game.setPlayfield(i, 0);
+            timer.start();
+            oldPlayfield = game.getPlayfield().clone();
+            game.setTurnTaken(false);
+        }
+        repaint();
+    }
+
+    public void setWinningLine(){
+        painter.setWinningX1(game.getWinningX1());
+        painter.setWinningY1(game.getWinningY1());
+        painter.setWinningX2(game.getWinningX2());
+        painter.setWinningY2(game.getWinningY2());
+    }
+
+    //game controlling method
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (!game.checkWin() && isChanged(oldPlayfield)){
-            repaint();
-            oldPlayfield = game.getPlayfield().clone();
-            System.out.println(2);
-        } else if (game.checkWin()){
-            repaint();
-        }
+        Thread actionThread = new Thread(){
+            @Override
+            public void run() {
+                //check if game state evaluation needs to be done
+                if (isChanged(oldPlayfield)) {
+                    gameWon = game.checkWin();
+                    //repaint board if not won
+                    if (!gameWon) {
+                        repaint();
+                        oldPlayfield = game.getPlayfield().clone();
+                    }
+                    //stop timer if game won
+                    else if (gameWon || game.emptyTiles() == 0) {
+                        setWinningLine();
+                        repaint();
+                        timer.stop();
+                        System.out.println("Game ended");
+                        try {
+                            Thread.sleep(1000);
+                            int n = JOptionPane.showConfirmDialog(null, "Do you want to play again?");
+                            if (n == 0){
+                                resetBoard();
+                            } else {
+                                System.exit(0);
+                            }
+                        } catch (InterruptedException interruptedException) {
+                            interruptedException.printStackTrace();
+                        }
+                    }
+                }
+                //check if computer needs to take a turn
+                if (game.isTurnTaken() && game.emptyTiles() != 0){
+                    game.setTurnTaken(false);
+                    game.computersTurn();
+                }
+            }
+        };
+        actionThread.start();
     }
 
     private boolean isChanged(int[] playfield){
         return !Arrays.equals(game.getPlayfield(), playfield);
-    }
-
-    private class MAdapter extends MouseAdapter{
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            super.mouseClicked(e);
-            int column = e.getX()/TILE_X;
-            int row = e.getY()/TILE_Y;
-            game.setPlayfield(column * 3 + row, 1);
-        }
     }
 }

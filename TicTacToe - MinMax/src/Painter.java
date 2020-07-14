@@ -5,9 +5,11 @@ public class Painter {
     private final int TILE_X;
     private final int TILE_Y;
 
+    private int winningX1, winningY1, winningX2, winningY2;
+
     public Painter(int boardWidth, int boardHeight){
         TILE_X = boardWidth/3;
-        TILE_Y = boardWidth/3;
+        TILE_Y = boardHeight/3;
     }
 
     public void drawX(Graphics g, int column, int row) {
@@ -44,5 +46,29 @@ public class Painter {
         for (int i = 1; i < 3; i++){
             g2d.drawLine(TILE_X*i, 0, TILE_X*i, TILE_Y*3);
         }
+    }
+
+    public void paintWinnerLine(Graphics g){
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.RED);
+        g2d.setStroke(new BasicStroke(40));
+        System.out.println(winningX1 + ", " + winningY1 + ", " + winningX2 + ", " + winningY2);
+        g2d.drawLine(winningX1 * 300 + 150, winningY1 * 300 + 150, winningX2 * 300 + 150, winningY2 * 300 + 150);
+    }
+
+    public void setWinningX1(int winningX1) {
+        this.winningX1 = winningX1;
+    }
+
+    public void setWinningX2(int winningX2) {
+        this.winningX2 = winningX2;
+    }
+
+    public void setWinningY1(int winningY1) {
+        this.winningY1 = winningY1;
+    }
+
+    public void setWinningY2(int winningY2) {
+        this.winningY2 = winningY2;
     }
 }

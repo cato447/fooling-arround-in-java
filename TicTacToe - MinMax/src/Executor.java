@@ -15,7 +15,12 @@ public class Executor extends JFrame {
     }
 
     public static void main(String[] args) {
-        Executor exc = new Executor();
-        exc.setVisible(true);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Executor exc = new Executor();
+                exc.setVisible(true);
+            }
+        });
     }
 }
