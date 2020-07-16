@@ -3,11 +3,13 @@ import javax.swing.*;
 public class Game {
 
     private int[] playfield;
+    private int boardValue;
     private boolean turnTaken = false;
     private int winningX1,winningY1,winningX2,winningY2;
 
     public Game(){
         playfield = new int[9];
+        boardValue = 0;
     }
 
     public void place(int position, int player){
@@ -22,20 +24,18 @@ public class Game {
     }
 
     public void computersTurn(){
-        boolean isPlaced = false;
-        try {
-            Thread.sleep(750);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        while(!isPlaced){
-            int random = (int) (Math.random() * 9);
-                // if field is free
-                if (playfield[random] == 0) {
-                    place(random, -1);
-                    isPlaced = true;
+        for (int i = 0; i < playfield.length; i++){
+            if (playfield[i] == 0){
+                if (minmax(playfield, 0, true) == 1){
+                    place(i, -1);
+                    return;
                 }
+            }
         }
+    }
+
+    private int minmax(int[] board, int depth, boolean isMaximizing){
+        return 1;
     }
 
     public boolean checkWin() {
@@ -47,6 +47,11 @@ public class Game {
                     winningX1 = 75;
                     winningX2 = 825;
                     winningY1 = winningY2 = i * 300 + 150;
+                    if (playfield[i] == 1){
+                        boardValue = 10;
+                    } else {
+                        boardValue = -10;
+                    }
                     return true;
                 }
                 //vertical
@@ -54,6 +59,11 @@ public class Game {
                     winningY1 = 75;
                     winningY2 = 825;
                     winningX1 = winningX2 = i * 300 + 150;
+                    if (playfield[i * 3] == 1){
+                        boardValue = 10;
+                    } else {
+                        boardValue = -10;
+                    }
                     return true;
                 }
             }
@@ -61,13 +71,24 @@ public class Game {
             if ((playfield[2] == playfield[4] && playfield[2] != 0) && (playfield[2] == playfield[6])){
                 winningX2 = winningY1 = 75;
                 winningX1 = winningY2 = 825;
+                if (playfield[2] == 1){
+                    boardValue = 10;
+                } else {
+                    boardValue = -10;
+                }
                 return true;
             } else if ((playfield[0] == playfield[4] && playfield[0] != 0) && (playfield[0] == playfield[8])){
                 winningX1 = winningY1 = 75;
                 winningX2 = winningY2 = 825;
+                if (playfield[0] == 1){
+                    boardValue = 10;
+                } else {
+                    boardValue = -10;
+                }
                 return true;
             }
         }
+        boardValue = 0;
         return false;
     }
     
@@ -78,7 +99,6 @@ public class Game {
                 n -= 1;
             }
         }
-        System.out.println(n);
         return n;
     }
 
@@ -112,5 +132,13 @@ public class Game {
 
     public int getWinningY2() {
         return winningY2;
+    }
+
+    public int getBoardValue() {
+        return boardValue;
+    }
+
+    public void setBoardValue(int boardValue) {
+        this.boardValue = boardValue;
     }
 }
