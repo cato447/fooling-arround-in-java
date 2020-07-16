@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TicTacToe - MinMax:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TicTacToe___MinMax_jar</output-path>
+    <root id="archive" name="TicTacToe - MinMax.jar">
+      <element id="module-output" name="TicTacToe - MinMax" />
+    </root>
+  </artifact>
+</component>
