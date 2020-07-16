@@ -132,7 +132,7 @@ public class Board extends JPanel implements ActionListener {
                     }
                 }
                 //check if computer needs to take a turn
-                if (game.isTurnTaken() && game.emptyTiles() != 0){
+                if (game.isTurnTaken()){
                     game.setTurnTaken(false);
                     game.computersTurn();
                 }

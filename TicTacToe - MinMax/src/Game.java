@@ -70,7 +70,7 @@ public class Game {
         }
         return false;
     }
-
+    
     public int emptyTiles(){
         int n = 9;
         for (int i = 0; i < playfield.length; i++){
@@ -78,6 +78,7 @@ public class Game {
                 n -= 1;
             }
         }
+        System.out.println(n);
         return n;
     }
 
