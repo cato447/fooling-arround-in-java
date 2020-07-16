@@ -14,6 +14,8 @@ public class Board extends JPanel implements ActionListener {
     private final int TILE_Y = 300;
     private final int DELAY = 50;
 
+    private boolean ended = false;
+
     private boolean gameWon = false;
     private boolean initialized = false;
 
@@ -37,7 +39,6 @@ public class Board extends JPanel implements ActionListener {
                 int column = e.getX()/TILE_X;
                 int row = e.getY()/TILE_Y;
                 game.place(column * 3 + row, 1);
-                System.out.println(Arrays.toString(game.getPlayfield()));
             }
         });
 
@@ -74,16 +75,19 @@ public class Board extends JPanel implements ActionListener {
                 actions++;
             }
         }
-        painter.paintWinnerLine(g);
+        if (ended) {
+            painter.paintWinnerLine(g);
+        }
     }
 
     public void resetBoard(){
         for (int i = 0; i < game.getPlayfield().length; i++){
             game.setPlayfield(i, 0);
-            timer.start();
-            oldPlayfield = game.getPlayfield().clone();
-            game.setTurnTaken(false);
         }
+        timer.start();
+        oldPlayfield = game.getPlayfield().clone();
+        game.setTurnTaken(false);
+        ended = false;
         repaint();
     }
 
@@ -110,10 +114,10 @@ public class Board extends JPanel implements ActionListener {
                     }
                     //stop timer if game won
                     else if (gameWon || game.emptyTiles() == 0) {
+                        ended = true;
                         setWinningLine();
                         repaint();
                         timer.stop();
-                        System.out.println("Game ended");
                         try {
                             Thread.sleep(1000);
                             int n = JOptionPane.showConfirmDialog(null, "Do you want to play again?");

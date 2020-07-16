@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class Game {
 
@@ -30,8 +29,7 @@ public class Game {
             e.printStackTrace();
         }
         while(!isPlaced){
-            int random = (int) (Math.random() * (8 - 0 + 1) + 0);
-            System.out.println(random);
+            int random = (int) (Math.random() * 9);
                 // if field is free
                 if (playfield[random] == 0) {
                     place(random, -1);
@@ -46,22 +44,29 @@ public class Game {
             for (int i = 0; i < 3; i++) {
                 //horizontal
                 if ((playfield[i] == playfield[i + 3] && playfield[i] != 0) && (playfield[i] == playfield[i + 6])) {
-                    winningX1 = 0;
-                    winningX2 = 3;
-                    winningY1 = winningY2 = i;
+                    winningX1 = 75;
+                    winningX2 = 825;
+                    winningY1 = winningY2 = i * 300 + 150;
                     return true;
                 }
                 //vertical
                 else if ((playfield[i * 3] == playfield[i * 3 + 1] && playfield[i * 3] != 0) && (playfield[i * 3] == playfield[i * 3 + 2])) {
-                    winningX1 = winningX2 = i;
-                    winningY1 = 0;
-                    winningY2 = 3;
+                    winningY1 = 75;
+                    winningY2 = 825;
+                    winningX1 = winningX2 = i * 300 + 150;
                     return true;
                 }
             }
             //diagonal
-            return (playfield[2] == playfield[4] && playfield[2] != 0) && (playfield[2] == playfield[6]) ||
-                    (playfield[0] == playfield[4] && playfield[0] != 0) && (playfield[0] == playfield[8]);
+            if ((playfield[2] == playfield[4] && playfield[2] != 0) && (playfield[2] == playfield[6])){
+                winningX2 = winningY1 = 75;
+                winningX1 = winningY2 = 825;
+                return true;
+            } else if ((playfield[0] == playfield[4] && playfield[0] != 0) && (playfield[0] == playfield[8])){
+                winningX1 = winningY1 = 75;
+                winningX2 = winningY2 = 825;
+                return true;
+            }
         }
         return false;
     }

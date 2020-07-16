@@ -52,8 +52,7 @@ public class Painter {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.RED);
         g2d.setStroke(new BasicStroke(40));
-        System.out.println(winningX1 + ", " + winningY1 + ", " + winningX2 + ", " + winningY2);
-        g2d.drawLine(winningX1 * 300 + 150, winningY1 * 300 + 150, winningX2 * 300 + 150, winningY2 * 300 + 150);
+        g2d.drawLine(winningX1, winningY1, winningX2, winningY2);
     }
 
     public void setWinningX1(int winningX1) {
