@@ -1,0 +1,9 @@
+Variables:
+player, board, search_depth
+
+Data_structure:
+BinaryTree
+
+Loops:
+recursion
+    for-loop
