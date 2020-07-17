@@ -24,18 +24,59 @@ public class Game {
     }
 
     public void computersTurn(){
-        for (int i = 0; i < playfield.length; i++){
-            if (playfield[i] == 0){
-                if (minmax(playfield, 0, true) == 1){
-                    place(i, -1);
-                    return;
-                }
-            }
-        }
+        place(findBestMove(playfield), -1);
     }
 
     private int minmax(int[] board, int depth, boolean isMaximizing){
-        return 1;
+        int score = getBoardValue();
+
+        if (boardValue == 10 || boardValue == -10){
+            return score;
+        }
+
+        if (emptyTiles() == 0){
+            return 0;
+        }
+
+        if (isMaximizing){
+            int best = -1000;
+            for (int i = 0; i < board.length; i++){
+                if (board[i] == 0){
+                    board[i] = 1;
+                    best = Math.max(score, minmax(board, depth + 1, false)) - depth;
+                    board[i] = 0;
+                }
+            }
+            return best;
+        } else {
+            int best = 1000;
+            for (int i = 0; i < board.length; i++){
+                if (board[i] == 0){
+                    board[i] = -1;
+                    best = Math.min(score, minmax(board, depth + 1, true)) + depth;
+                    board[i] = 0;
+                }
+            }
+            return best;
+        }
+    }
+
+    private int findBestMove(int[] board){
+        int bestVal = -1000;
+        int index = -1;
+
+        for (int i = 0; i < board.length; i++){
+            if (board[i] == 0){
+                board[i] = 1;
+                int moveVal = minmax(board, 0, false);
+                board[i] = 0;
+                if (moveVal > bestVal){
+                    index = i;
+                    bestVal = moveVal;
+                }
+            }
+        }
+        return index;
     }
 
     public boolean checkWin() {
@@ -135,6 +176,7 @@ public class Game {
     }
 
     public int getBoardValue() {
+        checkWin();
         return boardValue;
     }
 
