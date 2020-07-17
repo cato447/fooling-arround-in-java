@@ -104,7 +104,7 @@ public class Board extends JPanel implements ActionListener {
             public void run() {
                 //check if game state evaluation needs to be done
                 if (isChanged(oldPlayfield)) {
-                    gameWon = game.checkWin();
+                    gameWon = game.checkWin(game.getPlayfield());
                     //repaint board if not won
                     if (!gameWon) {
                         repaint();
