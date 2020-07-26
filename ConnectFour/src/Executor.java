@@ -7,15 +7,20 @@ public class Executor extends JFrame {
     }
 
     private void initUI(){
-        Board board = new Board();
-        add(board);
+        Panel panel = new Panel();
+        add(panel);
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
 
     public static void main(String[] args) {
-        Executor executor = new Executor();
-        executor.setVisible(true);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Executor executor = new Executor();
+                executor.setVisible(true);
+            }
+        });
     }
 }
