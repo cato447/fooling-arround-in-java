@@ -7,12 +7,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Panel extends JPanel implements ActionListener {
 
-    private final int DELAY = 50;
+    private final int DELAY = 10;
     private final int BOARD_W = 700;
     private final int BOARD_H = 600;
     private Chip[][] board = new Chip[7][6];
-    private boolean isInitialized = false;
+    private boolean isFinished = true;
     private boolean right,left,space;
+    private int times = 0;
 
     private Painter painter;
     private Timer timer;
@@ -31,65 +32,63 @@ public class Panel extends JPanel implements ActionListener {
     private void initGame() {
         painter = new Painter(this, BOARD_W, BOARD_H);
         timer = new Timer(DELAY, this);
-        //timer.start();
+        timer.start();
     }
 
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       repaint();
+        repaint();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         painter.paintBoard(g);
-        if (!isInitialized) {
-            fillBoard(g);
-            isInitialized = true;
+        actualizeBoard(g);
+        if (isFinished){
+            fillBoard();
+            isFinished = false;
         }
     }
 
-    private void fillBoard(Graphics g) {
-        class MyExecutor extends SwingWorker<Void, SwingWorkerValues>{
-            Graphics g;
-            public MyExecutor(Graphics g){
-                this.g = g;
+    public void actualizeBoard(Graphics g){
+        for (Chip[] chips : board) {
+            for (Chip chip: chips) {
+                if (chip != null){
+                    painter.paintChip(g, chip.isRed(), chip.getPosition().x, chip.getPosition().y);
+                }
             }
+        }
+    }
+
+    public void fillBoard(){
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-                for (int column = 5; column >= 0; column--){
-                    for (int row = 0; row < 7; row++) {
-                        Thread.sleep(100);
-                        publish(new SwingWorkerValues(row, column));
+                for (int column = 0; column < 7; column++){
+                    for (int row = 0; row < 7; row++){
+                        Thread.sleep(10);
+                        addToBoard(new Chip(times % 2 == 0, row, column));
                     }
                 }
                 return null;
             }
 
             @Override
-            protected void process(java.util.List<SwingWorkerValues> chunks) {
-                super.process(chunks);
-                SwingWorkerValues values = chunks.get(chunks.size()-1);
-                System.out.println(values.row + " " + values.column);
-                painter.paintRedChip(g, values.row, values.column);
-                repaint();
-            }
-
-            @Override
             protected void done() {
                 super.done();
-                painter.paintYellowChip(g, 2,2);
-
+                times++;
+                isFinished = true;
+                System.out.println(times);
             }
-        }
-        MyExecutor executor = new MyExecutor(g);
-        executor.execute();
+        };
+        worker.execute();
     }
 
-    public void addToBoard (Chip chip, int x, int y){
-        board[x][y] = chip;
+    public void addToBoard (Chip chip){
+        board[chip.getPosition().x][chip.getPosition().y] = chip;
     }
 
     class MovingKeyListener implements KeyListener {

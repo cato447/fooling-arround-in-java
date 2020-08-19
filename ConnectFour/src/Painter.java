@@ -23,6 +23,8 @@ public class Painter {
 
     public void paintBoard(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setStroke(new BasicStroke(2));
         for (int i = 0; i < board_w/tileWidth; i++){
             for (int j = 0; j < board_h/tileHeight; j++){
@@ -34,22 +36,12 @@ public class Painter {
         }
     }
 
-    public void paintRedChip(Graphics g, int x, int y) {
-        String path = "ConnectFour/res/redChip.png";
+    public void paintChip(Graphics g, boolean isRed, int x, int y) {
         Graphics2D g2d = (Graphics2D) g;
-        Chip redChip = new Chip(path, true, tileWidth, tileHeight);
-        redChip.setPosition(x, y);
-        panel.addToBoard(redChip, x, y);
-        g2d.drawImage(redChip.getImage(), x * tileWidth + 10, y * tileHeight + 5, panel);
-    }
-
-    public void paintYellowChip(Graphics g, int x, int y) {
-        String path = "ConnectFour/res/yellowChip.png";
-        Graphics2D g2d = (Graphics2D) g;
-        Chip yellowChip = new Chip(path, false, tileWidth, tileHeight);
-        yellowChip.setPosition(x, y);
-        panel.addToBoard(yellowChip, x, y);
-        g2d.drawImage(yellowChip.getImage(), x , y , panel);
+        Chip chip = new Chip(isRed,x, y);
+        chip.setPosition(x, y);
+        panel.addToBoard(chip);
+        g2d.drawImage(chip.getImage(), x * tileWidth + 10 , y * tileHeight + 5, panel);
     }
 
 }
