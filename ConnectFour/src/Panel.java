@@ -80,7 +80,6 @@ public class Panel extends JPanel implements ActionListener {
             protected void done() {
                 super.done();
                 times++;
-                isFinished = true;
                 System.out.println(times);
             }
         };
