@@ -12,7 +12,7 @@ You dont need anything besides a Java JDK to run the different projects.
 | DemoProjects | This contains topics I cloned from other sites to teach me something | Passive Development |
 | Doodles | Challanges that come to my mind | Passive Development |
 | ImageToText | Goal is to create a recognisable image with text charakters <br> Program is currently an image viewer| Passive Development |
-| LanguageDecryption | | |
+| LanguageDecryption | Analyses the frequenzy of every character and decrypts the encrypted text based on the analysis <br> Only supports german texts with 10.000+ words | |
 | Tools | | |
 | TicTacToe - MinMax | | |
 | out | | |
