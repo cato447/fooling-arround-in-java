@@ -8,7 +8,7 @@ You dont need anything besides a Java JDK to run the different projects.
 |:----------:|:-------------:|:------:|
 | ATM-Machine |  Doodeling arround with System.in <br> Maybe add a Database to Project| In Development |
 | BruitForce | Bruitforce a 6-Digit password | Done |
-| CodingChallanges | Contains every coding challange I solved <br> All challanges were taken from [Edabit](www.edabit.com/challanges) |    $1 |
+| CodingChallanges | Contains every coding challange I solved <br> All challanges were taken from [Edabit](https://edabit.com/challanges) |    $1 |
 | DemoProjects | | |
 | Doodles | | |
 | ImageToText | | |
