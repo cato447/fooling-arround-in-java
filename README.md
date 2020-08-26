@@ -4,8 +4,15 @@ This repository includes all projects, which are only build with the basic java 
 You dont need anything besides a Java JDK to run the different projects.
 
 # The projects
-| Tables   |      Are      |  Cool |
+| Name   |      Description     |  Status |
 |----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
+| ATM-Machine |  Doodeling arround with System.in | Done |
+| BruitForce |    centered   |   $12 |
+| CodingChallanges | right-aligned |    $1 |
+| DemoProjects | | |
+| Doodles | | |
+| ImageToText | | |
+| LanguageAnalysis | | |
+| Tools | | |
+| TicTacToe - MinMax | | |
+| out | | |
