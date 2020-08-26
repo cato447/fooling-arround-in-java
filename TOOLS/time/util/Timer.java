@@ -5,7 +5,7 @@ package util;
  *
  * @param starttime This Parameter captures the time at the beginning of a program
  * @param endtime   This Parameter captures the time at the end of a program
- * @Author BiteCoding --> https://github.com/BiteCoding
+ * @Author cato447 --> https://github.com/cato447
  */
 
 import java.util.Date;
