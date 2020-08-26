@@ -5,7 +5,7 @@ You dont need anything besides a Java JDK to run the different projects.
 
 # The projects
 | Name   |      Description     |  Status |
-|----------|:-------------:|------:|
+|----------|-------------|------|
 | ATM-Machine |  Doodeling arround with System.in | Done |
 | BruitForce |    centered   |   $12 |
 | CodingChallanges | right-aligned |    $1 |
