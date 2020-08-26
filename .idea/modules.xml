@@ -9,7 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/DemoProjects/DemoProjects.iml" filepath="$PROJECT_DIR$/DemoProjects/DemoProjects.iml" />
       <module fileurl="file://$PROJECT_DIR$/Doodles/Doodles.iml" filepath="$PROJECT_DIR$/Doodles/Doodles.iml" />
       <module fileurl="file://$PROJECT_DIR$/ImageToText/ImageToText.iml" filepath="$PROJECT_DIR$/ImageToText/ImageToText.iml" />
-      <module fileurl="file://$PROJECT_DIR$/LanguageAnalysis/LanguageAnalysis.iml" filepath="$PROJECT_DIR$/LanguageAnalysis/LanguageAnalysis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LanguageDecryption/LanguageDecryption.iml" filepath="$PROJECT_DIR$/LanguageDecryption/LanguageDecryption.iml" />
       <module fileurl="file://$PROJECT_DIR$/TOOLS/TOOLS.iml" filepath="$PROJECT_DIR$/TOOLS/TOOLS.iml" />
       <module fileurl="file://$PROJECT_DIR$/TicTacToe - MinMax/TicTacToe - MinMax.iml" filepath="$PROJECT_DIR$/TicTacToe - MinMax/TicTacToe - MinMax.iml" />
     </modules>

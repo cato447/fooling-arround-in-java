@@ -4,7 +4,7 @@ import java.io.*;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
-public class Marshal {
+public class TerminalTool {
 
     File file;
     RandomAccessFile ramAccessFile;
@@ -19,7 +19,7 @@ public class Marshal {
             { '#', 'm' }, { '#', 'o' }, { '#', 'b' }, { '#', 'w' }, { '#', 'f' }, { '#', 'k' }, { '#', 'z' },
             { '#', 'p' }, { '#', 'v' }, { '#', 'ß' }, { '#', 'j' }, { '#', 'y' }, { '#', 'x' }, { '#', 'q' } };
 
-    public Marshal(String path) throws IOException {
+    public TerminalTool(String path) throws IOException {
         file = new File(path);
         ramAccessFile = new RandomAccessFile(file, "rw");
         df = new DecimalFormat("#.00");
@@ -141,8 +141,8 @@ public class Marshal {
 
     public static void main(String[] args) throws Exception {
         if (args.length == 1) {
-            Marshal marshal = new Marshal(args[0]);
-            marshal.analyse();
+            TerminalTool terminalTool = new TerminalTool(args[0]);
+            terminalTool.analyse();
         } else if(args.length == 0){
             System.err.println("File location is missing");
         } else {
