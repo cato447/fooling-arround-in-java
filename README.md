@@ -15,4 +15,5 @@ You dont need anything besides a Java JDK to run the different projects.
 | LanguageDecryption | Analyses the frequenzy of every character and decrypts <br> the encrypted text based on the analysis. <br> Only supports german texts with 10.000+ words (Terminal/Cmd only) | Done |
 | Tools | Frequently used things such as readers or writers for files | Passive Development |
 | TicTacToe | Basic TicTacToe game <br> Automation with MinMax in its own branch | Active Development |
+| (ConnectFour) | Currently in its own branch <br> Trying to automate it with MinMax aswell | Active Development |
 | out | IntelliJ specific Folder <br> Home of all .class files and jars | - |
