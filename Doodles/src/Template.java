@@ -10,9 +10,11 @@ public class Template {
      */
 
     public static void main(String[] args) {
-        int num = 1000;
-        for (int j = 0; j < 50; j++) {
-            for (int i = 0; i < 59; i++) {
+        int num = 1;
+        for (int j = 0; j < 3; j++) {
+            //Cycle through rows
+            for (int i = 0; i < 5; i++) {
+                //Cycle through columns
                 System.out.print(num+" ");
                 num++;
             }

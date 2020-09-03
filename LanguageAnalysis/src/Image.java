@@ -24,7 +24,7 @@ public class Image extends Canvas {
     private KeyListener keys;
 
     public Image() {
-        f = new File("/home/bitecoding/Bilder");
+        f = new File("/home/bitecoding/Pictures");
         files = new ArrayList<File>(Arrays.asList(f.listFiles()));
         c = null;
         n = 0;
