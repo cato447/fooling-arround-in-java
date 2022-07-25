@@ -1,4 +1,4 @@
-# real-java
+# fooling-arround-with-java
 This repository includes all projects, which are only build with the basic java libraries.
 
 You dont need anything besides the Java JDK 14.0.1 to run the different projects.
